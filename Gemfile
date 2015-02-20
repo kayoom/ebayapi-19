@@ -5,6 +5,4 @@ gemspec
 gem 'rake'
 gem "appraisal"
 
-if RUBY_VERSION =~ /^2.2/
-  gem 'test-unit'
-end
+gem 'test-unit' if RUBY_VERSION =~ /^2.2/
