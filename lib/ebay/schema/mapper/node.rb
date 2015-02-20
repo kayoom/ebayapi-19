@@ -1,8 +1,9 @@
+require 'active_support/inflector'
+
 module Ebay
   module Schema
     class Node
       include Inflections
-      class_attribute :override_type
 
       attr_accessor :name, :min, :max
       def initialize(name, attributes = {})
@@ -27,6 +28,9 @@ module Ebay
           name
         end
       end
+      
+      def override_type
+      end
 
       def xml_mapping_node_type
         override_type || ActiveSupport::Inflector.demodulize(self.class.to_s).underscore
@@ -38,7 +42,7 @@ module Ebay
 
       private
       def clean_class_name(name)
-        trim_namespace(name.gsub(/Type$/, '')).camelize
+        ActiveSupport::Inflector.camelize trim_namespace(name.gsub(/Type$/, ''))
       end
 
       def trim_name(type)
@@ -88,7 +92,9 @@ end
     end
 
     class DateTimeNode < TextNode
-      self.override_type = 'time_node'
+      def override_type
+        'time_node'
+      end
     end
 
     class ValueArrayNode < Node
