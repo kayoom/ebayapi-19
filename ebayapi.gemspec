@@ -4,13 +4,13 @@ $:.push File.expand_path("../lib", __FILE__)
 require 'ebay/version'
 
 Gem::Specification.new do |s|
-  s.name        = "ebayapi"
+  s.name        = "ebayapi-resurrected"
   s.version     = Ebay::VERSION
-  s.author      = "Cody Fauser"
-  s.email       = "codyfauser@gmail.com"
-  s.homepage    = "https://github.com/codyfauser/ebay"
+  s.authors     = ["Cody Fauser", "Marian Theisen"]
+  s.email       = ["codyfauser@gmail.com", "marian.theisen@kayoom.com"]
+  s.homepage    = "https://github.com/kayoom/ebayapi-19"
   s.summary     = "Ruby interface to the eBay XML Trading API"
-  s.description = "A ruby library for interacting with the eBay XML Trading API, based on self-generated request and response classes."
+  s.description = "A ruby library for interacting with the eBay XML Trading API, based on self-generated request and response classes. Updated for Ruby 1.9, 2.0, 2.1."
 
   s.files        = Dir["{lib,test}/**/*", "[A-Z]*", "init.rb"]
   s.require_path = "lib"

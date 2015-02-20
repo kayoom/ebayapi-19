@@ -1,6 +1,21 @@
 Changelog
 =========
 
+Version 0.9.0 (February 20, 2015)
+---------------------------------
+
+* Based on the fork of https://github.com/CPlus/ebayapi-19
+* Updated LibXML dependency
+* Updated SOAP4r dependency
+* Updated eBay API Version to 905
+* Fixed generation and cleanup of classes
+* Fixed dependencies concerning minitest and test-unit
+* Losened dependency on ActiveSupport to increase compatibility with
+  different Rails versions (3.0, 3.1, 3.2, 4.0, 4.1, 4.2)
+
+Pre-Kayoom
+----------
+
 * Still return the stylesheet in XslFile even when the regex doesn't match
 * Update to schema version 653
 * Update to schema version 637
