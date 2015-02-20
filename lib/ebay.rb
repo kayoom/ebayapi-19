@@ -20,5 +20,11 @@ require 'support/cattr_accessor'
 # Include the additional XML::Mapping node types
 require 'support/xml_mapping'
 
+require 'libxml'
+
+module ::XML
+  include LibXML::XML
+end
+
 # Include the main program file
 require 'ebay/ebay'
