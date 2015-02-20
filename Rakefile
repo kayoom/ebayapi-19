@@ -1,7 +1,6 @@
 $:.unshift File.join(File.dirname(__FILE__), 'lib')
 require 'rubygems'
-require 'rake'
-require 'bundler'
+require 'bundler/setup'
 
 Bundler::GemHelper.install_tasks
 

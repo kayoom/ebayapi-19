@@ -1,6 +1,6 @@
-source :rubygems
+source "https://rubygems.org"
 
 gemspec
 
-gem 'minitest', '~> 4.0'
 gem 'rake'
+gem "appraisal"

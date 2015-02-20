@@ -2,6 +2,12 @@ $:.unshift File.dirname(__FILE__)
 $:.unshift File.join(File.dirname(__FILE__), "..", "lib")
 $:.unshift File.join(File.dirname(__FILE__), "..", "lib", "schema")
 
+# Throw minitest out of the load path. Minitest is required by ActiveSupport,
+# but breaks stdlib Test::Unit. We only use ActiveSupport Inflections, not the
+# parts depending on Minitest, so its rather safe, to remove Minitest from the
+# load paths.
+$:.delete_if { |p| p.include?("gems/minitest") }
+
 require 'test/unit'
 require 'ebay'
 require 'http_mock'
