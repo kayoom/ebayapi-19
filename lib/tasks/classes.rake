@@ -2,7 +2,8 @@ namespace :classes do
   desc "Remove the generated Ruby classes"
   task :cleanup do
     FileList[
-      "/ebay/requests.rb", "lib/ebay/responses.rb", "lib/ebay/types.rb", "lib/ebay/requests/*.rb", "lib/ebay/responses/*.rb", "lib/ebay/types/*.rb"
+      "lib/ebay/requests.rb", "lib/ebay/responses.rb", "lib/ebay/types.rb", "lib/ebay/requests/*.rb", "lib/ebay/responses/*.rb", "lib/ebay/types/*.rb",
+      "lib/ebay/api_methods.rb"
     ].each{|f| rm_rf f }
   end
 

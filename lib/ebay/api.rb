@@ -2,7 +2,13 @@ require 'uri'
 require 'zlib'
 require 'stringio'
 require 'ebay/request/connection'
-require 'ebay/api_methods'
+
+begin
+  require 'ebay/api_methods'
+rescue LoadError
+  module ApiMethods
+  end
+end
 
 module Ebay #:nodoc:
   class EbayError < StandardError #:nodoc:
