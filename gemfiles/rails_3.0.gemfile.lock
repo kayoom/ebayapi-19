@@ -22,11 +22,8 @@ GEM
     money (4.0.2)
       i18n (~> 0.4)
       json
-    power_assert (0.2.2)
     rake (10.4.2)
     soap4r-ruby1.9 (2.0.5)
-    test-unit (3.0.9)
-      power_assert
     thor (0.19.1)
     xml-mapping (0.10.0)
 
@@ -38,4 +35,3 @@ DEPENDENCIES
   appraisal
   ebayapi-resurrected!
   rake
-  test-unit
