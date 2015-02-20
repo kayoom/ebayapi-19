@@ -19,8 +19,8 @@ module TestModule
 end
 
 class CodeNodeTest < Test::Unit::TestCase
-  include TestModule 
-  
+  include TestModule
+
   def setup
     @xml = <<-END
 <Widget>
@@ -39,7 +39,7 @@ class CodeNodeTest < Test::Unit::TestCase
     item = Widget.load_from_xml(REXML::Document.new(@xml).root)
     assert_equal 2, item.names.size
     assert_equal ['Cody', 'Tobi'], item.names
-  end 
+  end
 
   def test_save_to_xml
     widget = Widget.new

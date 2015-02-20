@@ -6,7 +6,7 @@ class Widget
 end
 
 class CdataNodeTest < Test::Unit::TestCase
-  
+
   def setup
     @xml = <<-END
 <widget>
@@ -20,7 +20,7 @@ class CdataNodeTest < Test::Unit::TestCase
     item = Widget.load_from_xml(REXML::Document.new(@xml).root)
     assert_instance_of String, item.description
     assert_equal 'Blah blah blah', item.description
-  end 
+  end
 
   def test_save_to_xml
     widget = Widget.new

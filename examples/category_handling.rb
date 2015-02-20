@@ -16,9 +16,9 @@ require 'config'
 
 
 def print_category_details(categories)
-  
+
   categories.each() do |c|
-    
+
     # class Category
     #  :best_offer_enabled              allows best offer or not
     #  :auto_pay_enabled                immediate payment yes/no, defaults to false
@@ -36,7 +36,7 @@ def print_category_details(categories)
     #  :characteristics_sets            !? removed
     #  :expired                         you cannot list if expired
     #  :intl_autos_fixed_cat            fixed fee
-    #  :leaf_category                   this is a leaf you can list in 
+    #  :leaf_category                   this is a leaf you can list in
     #  :virtual                         you cannot list it's virtual...
     #  :num_of_items                    !? removed
     #  :seller_guarantee_eligible       Motors Seller Guarantee program
@@ -46,10 +46,10 @@ def print_category_details(categories)
     #  :orra                            the same for reduce reserve allowed
     #  :lsd                             item.lotsize is not permitted
     #  :keywords                        !? removed
-    
+
     puts "#{c.category_id} -> #{c.category_name}  level: #{c.category_level} parent: #{c.category_parent_id}"
-    
-    
+
+
   end
 end
 
@@ -61,7 +61,7 @@ end
 def check_category_updates(known_version, site_id)
   ebay = Ebay::Api.new
   resp = ebay.get_categories({:category_site_id => site_id})
-  
+
   puts "------------"
   puts "check for category updates"
   puts "old hierarchy version: #{known_version}"
@@ -77,32 +77,32 @@ end
 # ---------------------------------------------------------------
 def get_category_mapping(site_id)
   ebay = Ebay::Api.new
-  
+
   puts "------------"
   puts "reading category mappings"
   resp = ebay.get_category_mappings()
-  
+
   # the response:
   #
-  # class GetCategoryMappings 
+  # class GetCategoryMappings
   #    :category_mappings   the mappings
   #    :category_version    the new version of the category hierarchy
   puts "mapping to new category version #{resp.category_version}"
-  
+
   puts "found #{resp.category_mappings.count()} mappings"
-  
+
   doesnotwork = true
 end
 
 
 
-# create Ebay-Stub 
+# create Ebay-Stub
 ebay = Ebay::Api.new
 
 
 begin
   @ebay_site_id = 77
-  
+
   # Ebay::Requests::GetCategories
   #
   # Parameters
@@ -113,14 +113,14 @@ begin
   #                             only in these)
   #       :detail_level         "ReturnAll" gets you all category information
   #                             (standard input field)
-      
+
   # Germany -> total 23578 categories
-  response = ebay.get_categories({:view_all_nodes => false, 
+  response = ebay.get_categories({:view_all_nodes => false,
                                    :category_site_id => @ebay_site_id,
                                    :level_limit => 2,
                                    :detail_level => "ReturnAll"})
-  
-  
+
+
   # the response:
   #
   # class GetCategories
@@ -131,30 +131,30 @@ begin
   #       :reserve_price_allowed    the reserve_price_allowed default
   #       :minimum_reserve_price    the lowest possible reserve price
   #       :reduce_reserve_allowed   all categories default to allowing to reduce this price
-    
+
   puts "Category Statistics: "
   puts "Version:            #{response.category_version}"
   puts "Count:              #{response.category_count}"
   puts "Hierarchie Changed: #{response.update_time}"
-  
+
   # remember the version we read
   @category_version = response.category_version
-  
-  
+
+
   # uncomment to get a lot of information
   # print_category_details(response.categories)
-  
-  
+
+
   # check for category hierarchie updates
   check_category_updates(@category_version, @ebay_site_id)
-  
-  
+
+
   # check for mappings after hierarchy update
   get_category_mapping(@ebay_site_id)
-  
-  
+
+
 rescue Ebay::RequestError => e
-  
+
   e.errors.each do |error|
     puts "[ERROR] #{error.long_message}"
   end

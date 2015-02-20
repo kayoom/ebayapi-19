@@ -7,7 +7,7 @@ class GetAttributesCSTest < Test::Unit::TestCase
   def setup
     @ebay = Api.new
   end
-	
+
   def test_load_response
     # HttpMock.respond_with responses(:get_attributes_cs)
     # response = @ebay.get_attributes_cs(:detail_level => 'ReturnAll')

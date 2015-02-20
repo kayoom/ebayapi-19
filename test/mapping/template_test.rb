@@ -1,11 +1,11 @@
 require File.dirname(__FILE__) + '/../test_helper'
 require File.dirname(__FILE__) + '/../../lib/ebay/schema/mapper'
-    
+
 class TemplateTest < Test::Unit::TestCase
   include Ebay::Schema
-  
+
   ClassTemplate.template_dir = FIXTURES_DIR + '/templates'
-  
+
   def test_template_exists?
     assert ClassTemplate.new('base').exists?
     assert !ClassTemplate.new('doesnt_exist').exists?
@@ -31,7 +31,7 @@ module Ebay
   end
 end
     END
-   
+
     class_def = ClassDefinition.new('GeteBayOfficialTime', 'GeteBayOfficialTimeRequest', 'Requests', 'AbstractRequest')
     class_def.nodes << TextNode.new('Name')
     class_def.nodes << ObjectNode.new('Employee', :type => 'Person')
@@ -58,7 +58,7 @@ module Ebay
   end
 end
     END
-    
+
     base = ClassTemplate.new('base').load
 
     customization = ClassTemplate.new('abstract_response').load

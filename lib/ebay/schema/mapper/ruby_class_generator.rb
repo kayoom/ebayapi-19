@@ -3,13 +3,13 @@ module Ebay
     class RubyClassGenerator
       include Inflections
       include RubyClassGeneratorHelper
-      BuiltInTypes = ['string', 'anyURI', 'int', 'float', 'long', 'dateTime', 'boolean', 'token', 'decimal', 'duration', 'double']
+      BuiltInTypes = ['string', 'anyURI', 'int', 'float', 'long', 'dateTime', 'boolean', 'token', 'decimal', 'duration', 'double', 'time']
 
       attr_reader :ignored_classes, :documentation
 
       def initialize(type, simple_types, complex_types, xml)
         @xml = xml
-                
+
         @indent = 2
         @type = type
         @simple_types, @complex_types = simple_types, complex_types
@@ -36,13 +36,13 @@ module Ebay
       end
 
       def generate_class
-        
+
         template = simple? ? 'value' : 'base'
         base = ClassTemplate.new(template).load
-       
+
         customization = ClassTemplate.new(ebay_underscore(name))
         customization.load if customization.exists?
-       
+
         if request? || response?
           class_name = ebay_camelize(name).gsub(/(Request|Response)$/, '')
         else
@@ -50,20 +50,20 @@ module Ebay
         end
 
         element_name = ebay_camelize(name)
-        
-          
+
+
         class_def = ClassDefinition.new(class_name, element_name, module_name, base_class)
         nodes = generate_nodes
 
         class_def.nodes.concat nodes
-        
+
         class_def.customization = customization.render(class_def) if customization.exists?
-      
+
         # class_def.documentation = @documentation
-        
+
         base.render(class_def)
       end
-      
+
       def xml_type
         @type.name.name
       end
@@ -109,7 +109,7 @@ module Ebay
       def request?
         abstract_request? || derived_request?
       end
-      
+
       def response?
         abstract_response? || derived_response?
       end
@@ -117,11 +117,11 @@ module Ebay
       def derived_request?
         base_class == 'AbstractRequest'
       end
-      
+
       def derived_response?
         base_class == 'AbstractResponse'
       end
-        
+
 
       private
       def select_template
@@ -156,10 +156,10 @@ module Ebay
         elsif simple_content?
           content = @type.simplecontent
           result = []
-          result << build_node_for_built_in_type(trim_type(name), content.extension.base.name, :field => '', :min => '0')
+          result << build_node_for_built_in_type(trim_type(name), content.extension.base.name, :field => '', :min => 0)
 
           result.concat(content.attributes.collect do |a|
-            TextNode.new(trim_code_type(a.type.name), :field => "@#{a.name.name}", :min => '0')
+            TextNode.new(trim_code_type(a.type.name), :field => "@#{a.name.name}", :min => 0)
           end)
           result
         else
@@ -183,7 +183,7 @@ module Ebay
 
       def nodes_for_complex_attributes
         @type.attributes.collect do |a|
-          build_node_for_built_in_type(trim_code_type(a.name.name), a.type.name, :field => "@#{a.name.name}", :min => '0')
+          build_node_for_built_in_type(trim_code_type(a.name.name), a.type.name, :field => "@#{a.name.name}", :min => 0)
         end
       end
 
@@ -203,8 +203,8 @@ module Ebay
       def node_for(element)
         name = element.name.name
         type = element.type.name
-        min = element.minoccurs || "1"
-        max = element.maxoccurs || "1"
+        min = element.minoccurs
+        max = element.maxoccurs || -1
 
         options = { :type => type,
           :min => min,
@@ -232,6 +232,8 @@ module Ebay
           NumericNode.new(name, options)
         when 'dateTime'
           DateTimeNode.new(name, options)
+        when 'time'
+          DateTimeNode.new(name, options)
         when 'boolean'
           BooleanNode.new(name, options)
         end
@@ -241,17 +243,26 @@ module Ebay
         min, max = options[:min], options[:max]
         simple_type = @simple_types.find_name(type)
 
+
         case max
-        when "1"
+        when 1
           if simple_type
             TextNode.new(name, options)
           elsif element = @complex_types.find_name(type)
-            if element.elements.size == 1 && element.elements[0].maxoccurs == "unbounded"
+            # if type == 'ErrorType'
+            #   puts name.inspect
+            #   puts min.inspect
+            #   puts max.inspect
+            #   puts element.elements.inspect
+            #   puts element.elements[0].maxoccurs
+            # end
+
+            if element.elements.size == 1 && element.elements[0].maxoccurs.nil? #-> unbounded
               # Found a container!
               child = element.elements[0]
 
               ignored = %w( MemberMessage BidApproval PromotionalSaleDetails BidAssistantList )
-              
+
               unless BuiltInTypes.include?(child.type.name)
                 @ignored_classes << name unless ignored.include?(name)
                 options[:type] = child.type.name

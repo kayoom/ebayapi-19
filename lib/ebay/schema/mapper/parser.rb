@@ -3,7 +3,9 @@ require 'xsd/ns'
 require 'xsd/charset'
 require 'xsd/datatypes'
 require 'xsd/xmlparser'
+require 'wsdl/documentation'
 require 'wsdl/xmlSchema/parser'
+
 
 module Ebay
   module Schema

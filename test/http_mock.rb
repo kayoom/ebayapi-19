@@ -38,11 +38,11 @@ module Ebay
     def [](index)
     end
   end
-  
+
   class Connection
     private
     def http
       @http ||= HttpMock.new(@site)
     end
   end
-end 
+end

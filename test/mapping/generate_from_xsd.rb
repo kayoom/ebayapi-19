@@ -2,14 +2,14 @@ require File.dirname(__FILE__) + '/../test_helper'
 require File.dirname(__FILE__) + '/../../lib/ebay/schema/mapper'
 
 require 'rexml/document'
-	
+
 class GenerateFromXSDTest < Test::Unit::TestCase
-	def setup
-		dir = File.join(File.dirname(__FILE__), '..', 'schema')
+  def setup
+    dir = File.join(File.dirname(__FILE__), '..', 'schema')
     schema = 'ebaySvc.xsd'
     @doc = REXML::Document.new(File.new(File.join(dir, schema)))
   end
- 
+
   def test_define_ebay_time_response
     generated = <<-ENDCLASS
 module Ebay

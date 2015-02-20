@@ -14,7 +14,7 @@ module Ebay
       @raw_data = post_data
       parse
     end
-    
+
     def valid?
       signature == generated_signature
     end
@@ -55,15 +55,15 @@ module Ebay
     def cert
       Api.cert
     end
-    
+
     def parse
       parse_xml_body
     end
-    
+
     def generated_signature
       @generated_signature ||= generate_signature
     end
-    
+
     def load_response_class(method_id)
       load_response_class(xml.root.name)
       XML::Mapping.load_object_from_xml(xml.root)
@@ -80,7 +80,7 @@ module Ebay
       raise InvalidNotificationError, "Notification timestamp is missing" if timestamp_node.nil?
       timestamp_node.text
     end
-    
+
     def parse_event_name
       event_name_node = REXML::XPath.first(document, "//NotificationEventName")
       raise InvalidNotificationError, "Notification event name is missing" if event_name_node.nil?
@@ -106,5 +106,5 @@ module Ebay
     def generate_signature
       Base64.encode64(Digest::MD5.digest(timestamp + dev_id + app_id + cert)).chomp
     end
-  end  
+  end
 end

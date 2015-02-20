@@ -8,7 +8,7 @@ require 'config'
 # The buyer and seller must be in a transactional relationship
 # Use this example as follows:
 # > ruby add_member_message_aaq_to_partner.rb RECIPIENT_EBAY_ID ITEM_ID
-# 
+#
 # A new message will be delivered to the recipients My Messages inbox
 #
 ebay = Ebay::Api.new

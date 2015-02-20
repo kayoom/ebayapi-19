@@ -7,7 +7,7 @@ class GetProductFinderXSLTest < Test::Unit::TestCase
   def setup
     @ebay = Api.new
   end
-	
+
   def test_get_product_finder_xsl
     HttpMock.respond_with responses(:get_product_finder_xsl)
     response = @ebay.get_product_finder_xsl(:detail_level => 'ReturnAll')
@@ -15,7 +15,7 @@ class GetProductFinderXSLTest < Test::Unit::TestCase
     file = response.xsl_files.first
     assert_equal 'product_finder.xsl', file.file_name
     assert_equal '2', file.file_version
-    
+
     assert_nothing_raised do
       REXML::Document.new(file.file_content)
     end

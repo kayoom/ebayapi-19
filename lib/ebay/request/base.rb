@@ -2,7 +2,7 @@ require 'ebay/types/xml_requester_credentials'
 
 module Ebay
   module Requests
-    class Base      
+    class Base
       include Ebay::Types
       attr_accessor :auth_token, :username, :password
 

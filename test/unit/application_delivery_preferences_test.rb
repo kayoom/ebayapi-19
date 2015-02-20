@@ -10,7 +10,7 @@ class ClassDefinitionTest < Test::Unit::TestCase
     assert prefs.application_enabled?
     assert prefs.alerts_enabled?
   end
-  
+
   def test_disabled
     prefs = ApplicationDeliveryPreferences.new(:application_enable => 'Disable',
                                                :alert_enable => 'Disable'

@@ -69,8 +69,6 @@ module Ebay
 
       def write_requires_files(classes)
         requests = classes.select{|c| c.derived_request? }
-        responses = classes.select{|c| c.derived_response? }
-        types = classes.select{|c| c.type?}
 
         write_requires_file('requests', requests, true)
         write_requires_file('responses', requests, true)
@@ -128,7 +126,7 @@ module Ebay
       end
 
       def remove_unused_files
-        @unused_files.uniq!.each do |file|
+        @unused_files.uniq.each do |file|
           if File.exists?(file)
             puts "Removing #{file}"
             File.delete(file)
@@ -138,6 +136,3 @@ module Ebay
     end
   end
 end
-
-
-

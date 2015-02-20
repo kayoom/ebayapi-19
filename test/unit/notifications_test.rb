@@ -3,7 +3,7 @@ require 'yaml'
 
 class NotificationsTest < Test::Unit::TestCase
   include Ebay
- 
+
   def setup
     @notification = Notification.new(notifications('ask_seller_question'))
     @m2mm = Notification.new(notifications('m2m_message1'))
@@ -13,7 +13,7 @@ class NotificationsTest < Test::Unit::TestCase
   def test_validity
     assert @notification.valid?
   end
-  
+
   def test_notification_details
     assert_equal 1, @body.member_messages.size
     message = @body.member_messages.first
@@ -26,7 +26,7 @@ class NotificationsTest < Test::Unit::TestCase
     assert_equal 'unitednerdsco@hotmail.com', question.sender_email
     assert_equal 'fguser2', question.sender_id
     assert_equal '148860', question.message_id
-  end 
+  end
 
   def test_empty_notification
     assert_raise(InvalidNotificationError){ Notification.new(nil) }
@@ -35,11 +35,11 @@ class NotificationsTest < Test::Unit::TestCase
   def test_invalid_notification_signature
     assert !Notification.new(notifications('invalid_signature')).valid?
   end
-  
+
   def test_missing_soap_body
     assert_raise(InvalidNotificationError){ Notification.new(notifications('no_soap_body')) }
   end
-  
+
   def test_notification_name
     assert_equal 'AskSellerQuestion', @notification.event_name
   end

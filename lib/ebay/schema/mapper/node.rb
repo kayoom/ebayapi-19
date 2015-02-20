@@ -9,8 +9,8 @@ module Ebay
       def initialize(name, attributes = {})
         @name = name
         @type = attributes[:type]
-        @min = attributes[:min] || "1"
-        @max = attributes[:max] || "1"
+        @min = (attributes[:min] || "1").to_s
+        @max = (attributes[:max] || "unbounded").to_s
         @field = attributes[:field]
         @child = attributes[:child]
       end
@@ -28,7 +28,7 @@ module Ebay
           name
         end
       end
-      
+
       def override_type
       end
 
@@ -102,7 +102,7 @@ end
         result = "#{declaration.pluralize}, '#{@name}', "
         result << "'#{@child}', " if @child
         result << ":default_value => []"
-			end
+      end
     end
 
     class ArrayNode < Node
@@ -114,7 +114,7 @@ end
         result = "#{declaration.pluralize}, '#{@name}', "
         result << "'#{@child}', " if @child
         result << ":class => #{class_name}, :default_value => []"
-			end
+      end
     end
 
     class MoneyNode < Node

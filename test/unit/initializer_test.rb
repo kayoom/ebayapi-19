@@ -16,10 +16,10 @@ end
 class Toolbox
   include XML::Mapping
   include Ebay::Initializer
-  
-  text_node :size, 'size'  
+
+  text_node :size, 'size'
   object_node :tool, 'tool', :class => Anvil
-end  
+end
 
 class BaseObjectTest < Test::Unit::TestCase
 
@@ -37,7 +37,7 @@ class BaseObjectTest < Test::Unit::TestCase
     anvil = Anvil.new(:name => 'Super')
     assert_equal 'Super', anvil.name
     assert_equal '<anvil><name>Super</name></anvil>', anvil.save_to_xml.to_s
-  end 
+  end
 
   def test_load_from_xml
     xml = REXML::Document.new('<anvil><name>Super</name></anvil>')
@@ -77,7 +77,7 @@ class ItemInitializationTest < Test::Unit::TestCase
                       :listing_duration => 'Days_3',
                       :country => 'US',
                       :currency => 'USD'
-                     ) 
+                     )
       item.save_to_xml
     end
   end

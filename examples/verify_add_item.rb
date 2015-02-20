@@ -22,7 +22,7 @@ item = Ebay::Types::Item.new(
 )
 
 begin
-  response = ebay.verify_add_item(:item => item)               
+  response = ebay.verify_add_item(:item => item)
   puts "Verifying item"
 
   puts "Item ID: #{response.item_id}"

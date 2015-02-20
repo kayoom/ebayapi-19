@@ -13,7 +13,7 @@ class Gizmo
 end
 
 class MoneyNodeTest < Test::Unit::TestCase
-  
+
   def setup
     @xml = <<-END
 <Widget>
@@ -29,7 +29,7 @@ class MoneyNodeTest < Test::Unit::TestCase
     assert_equal 1000, item.amount.cents
     assert_equal 'CAD', item.amount.currency.iso_code
   end
-  
+
   def test_to_xml
     item = Widget.new
     item.amount = Money.new(100, 'CAD')
@@ -37,7 +37,7 @@ class MoneyNodeTest < Test::Unit::TestCase
     assert_equal '1.00', item_xml.elements[1].text
     assert_equal 'CAD', item_xml.elements[1].attributes['currencyID']
   end
-  
+
   # Detect bug in Money library v 2.0.0
   def test_to_xml_without_default
     item = Gizmo.new

@@ -1,5 +1,5 @@
 require 'xml/mapping/base'
-require 'ebay/types/rental_price_value'
+#require 'ebay/types/rental_price_value'
 
 class RentalPriceValueNode < XML::Mapping::SingleAttributeNode
   def initialize_impl(path)

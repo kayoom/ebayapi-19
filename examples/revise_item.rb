@@ -8,7 +8,7 @@ ebay = Ebay::Api.new
 
 # Revise the item identified by the item_id passed in on the command line
 item = Ebay::Types::Item.new(
-  :item_id => ARGV.first, 
+  :item_id => ARGV.first,
   :description => 'Revised Body'
 )
 

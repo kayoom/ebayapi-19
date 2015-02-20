@@ -1,4 +1,4 @@
-# Extends the class object with class and instance accessors for class attributes, 
+# Extends the class object with class and instance accessors for class attributes,
 # just like the native attr* accessors for instance attributes.
 class Class # :nodoc:
   def cattr_reader(*syms)
@@ -7,7 +7,7 @@ class Class # :nodoc:
         if ! defined? @@#{sym.to_s}
           @@#{sym.to_s} = nil
         end
-        
+
         def self.#{sym.to_s}
           @@#{sym}
         end
@@ -27,14 +27,14 @@ class Class # :nodoc:
       EOS
     end
   end unless respond_to?(:cattr_reader)
-  
+
   def cattr_writer(*syms)
     syms.each do |sym|
       class_eval <<-EOS
         if ! defined? @@#{sym.to_s}
           @@#{sym.to_s} = nil
         end
-        
+
         def self.#{sym.to_s}=(obj)
           @@#{sym.to_s} = obj
         end
@@ -49,7 +49,7 @@ class Class # :nodoc:
       EOS
     end
   end unless respond_to?(:cattr_writer)
-  
+
   def cattr_accessor(*syms)
     cattr_reader(*syms)
     cattr_writer(*syms)

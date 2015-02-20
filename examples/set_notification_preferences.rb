@@ -8,10 +8,10 @@ require 'config'
 ebay = Ebay::Api.new
 
 # Set the 'Disable' to 'Enable' to enable the notifications
-preferences = Ebay::Types::ApplicationDeliveryPreferences.new( 
-  :application_url => 'http://example.com/notify', 
-  :application_enable => 'Disable', 
-  :alert_enable => 'Disable' 
+preferences = Ebay::Types::ApplicationDeliveryPreferences.new(
+  :application_url => 'http://example.com/notify',
+  :application_enable => 'Disable',
+  :alert_enable => 'Disable'
 )
 
 # Disable eBay Platform Notifications at the application level

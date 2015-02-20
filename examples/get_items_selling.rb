@@ -23,4 +23,4 @@ rescue Ebay::RequestError => e
     puts error.long_message
   end
 end
-                                     
+

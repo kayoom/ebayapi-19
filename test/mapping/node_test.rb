@@ -5,7 +5,7 @@ class NodeTest < Test::Unit::TestCase
   include Ebay::Schema
 
   def setup
-	end
+  end
 
   def test_create_text_node
     node = TextNode.new('Item', :type => 'string')
@@ -19,8 +19,8 @@ class NodeTest < Test::Unit::TestCase
   end
 
   def test_create_numeric_node
-	  node = NumericNode.new('Item', :type => 'int')
-	  assert_equal "numeric_node :item, 'Item'", node.to_s
+    node = NumericNode.new('Item', :type => 'int')
+    assert_equal "numeric_node :item, 'Item'", node.to_s
   end
 
   def test_numeric_node_overridden_type
@@ -34,23 +34,23 @@ class NodeTest < Test::Unit::TestCase
   end
 
   def test_create_boolean_node
-	  node = BooleanNode.new('ForSaleNow', :type => 'boolean')
-	  assert_equal "boolean_node :for_sale_now, 'ForSaleNow', 'true', 'false'", node.to_s
+    node = BooleanNode.new('ForSaleNow', :type => 'boolean')
+    assert_equal "boolean_node :for_sale_now, 'ForSaleNow', 'true', 'false'", node.to_s
   end
 
   def test_create_object_node
-	  node = ObjectNode.new('Pet', :type => 'dog')
-	  assert_equal "object_node :pet, 'Pet', :class => Dog", node.to_s
+    node = ObjectNode.new('Pet', :type => 'dog')
+    assert_equal "object_node :pet, 'Pet', :class => Dog", node.to_s
   end
 
   def test_create_array_node
-	  node = ArrayNode.new('Fees', :type => 'fees', :min => 0, :max => 'unbounded')
-	  assert_equal "array_node :fees, 'Fees', :class => Fees, :default_value => []", node.to_s
+    node = ArrayNode.new('Fees', :type => 'fees', :min => 0, :max => 'unbounded')
+    assert_equal "array_node :fees, 'Fees', :class => Fees, :default_value => []", node.to_s
   end
 
   def test_create_array_node_with_container
-	  node = ArrayNode.new('Fees', :type => 'Fee', :child => 'Fee', :min => 0, :max => 'unbounded')
-	  assert_equal "array_node :fees, 'Fees', 'Fee', :class => Fee, :default_value => []", node.to_s
+    node = ArrayNode.new('Fees', :type => 'Fee', :child => 'Fee', :min => 0, :max => 'unbounded')
+    assert_equal "array_node :fees, 'Fees', 'Fee', :class => Fee, :default_value => []", node.to_s
   end
 
   def test_create_datetime_node

@@ -2,13 +2,13 @@ module Ebay
   module Schema
     class Enumeration
       include Inflections
-      
+
       attr_accessor :codes
       def initialize(codes = [])
         codes.delete('CustomCode')
         @codes = codes
       end
-      
+
       def to_s
         <<-END
 CODES = [#{@codes * ','}]

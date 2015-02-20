@@ -21,5 +21,5 @@ class MappingSubclassTest < Test::Unit::TestCase
     item.status = StatusCode.new('Complete')
   end
 
-  
-end 
+
+end

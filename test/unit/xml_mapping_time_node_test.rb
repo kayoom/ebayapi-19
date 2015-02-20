@@ -6,7 +6,7 @@ class Widget
 end
 
 class TimeNodeTest < Test::Unit::TestCase
-  
+
   def setup
     @xml = <<-END
 <Widget>
@@ -20,7 +20,7 @@ class TimeNodeTest < Test::Unit::TestCase
     item = Widget.load_from_xml(REXML::Document.new(@xml).root)
     assert_instance_of Time, item.shipped_on
     assert_equal Time.parse('2006-07-21T21:52:37.000Z'), item.shipped_on
-  end 
+  end
 
   def test_save_to_xml
     widget = Widget.new

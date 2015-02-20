@@ -7,7 +7,7 @@ class GetAttributesXSLTest < Test::Unit::TestCase
   def setup
     @ebay = Api.new
   end
-	
+
   def test_get_attributes_xsl
     HttpMock.respond_with responses(:get_attributes_xsl)
     response = @ebay.get_attributes_xsl(:detail_level => 'ReturnAll')
@@ -15,7 +15,7 @@ class GetAttributesXSLTest < Test::Unit::TestCase
     file = response.xsl_files.first
     assert_equal 'syi_attributes.xsl', file.file_name
     assert_equal '26', file.file_version
-    
+
     assert_nothing_raised do
       REXML::Document.new(file.file_content)
     end
