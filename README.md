@@ -1,7 +1,6 @@
 eBay API Client for Ruby
 ========================
-
-This is a fork of the "kayoom/ebayapi" code. The ruby19 branch is merge into master.
+[![Build Status](https://travis-ci.org/kayoom/ebayapi-19.svg)](https://travis-ci.org/kayoom/ebayapi-19)
 
 The api implements the ebay Trading API. To get a list of calls look here:
 http://developer.ebay.com/DevZone/XML/docs/Reference/eBay/index.html
