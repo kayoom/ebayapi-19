@@ -19,8 +19,8 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = ">= 1.3.4"
 
   s.add_dependency("activesupport")
-  s.add_dependency("xml-mapping", ["~> 0.9.1"])
-  s.add_dependency("rubyjedi-soap4r", ["~> 1.5.8.20100619003610"])
+  s.add_dependency("xml-mapping", ["~> 0.10.0"])
+  s.add_dependency("soap4r-ruby1.9", ["2.0.5"])
   s.add_dependency("libxml-ruby", ["~> 2.8.0"])
   s.add_dependency("money", ["~> 4.0.2"])
 end
