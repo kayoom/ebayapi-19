@@ -15,5 +15,10 @@ module Ebay #:nodoc:
         send(k + "=", v)
       end
     end
+
+    def self.append_features(base) #:nodoc:
+      super
+      base.use_mapping :_default
+    end
   end
 end
