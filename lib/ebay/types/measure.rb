@@ -2,14 +2,14 @@
 module Ebay # :nodoc:
   module Types # :nodoc:
     # == Attributes
-    #  numeric_node :measure, '', :optional => true
+    #  value_array_node :measures, 'Measure', :default_value => []
     #  text_node :token, '@unit', :optional => true
     #  text_node :measurement_system, '@measurementSystem', :optional => true
     class Measure
       include XML::Mapping
       include Initializer
       root_element_name 'Measure'
-      numeric_node :measure, '', :optional => true
+      value_array_node :measures, 'Measure', :default_value => []
       text_node :token, '@unit', :optional => true
       text_node :measurement_system, '@measurementSystem', :optional => true
     end

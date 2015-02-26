@@ -17,7 +17,6 @@ module Ebay # :nodoc:
       Correos = 'Correos'
       Seur = 'Seur'
       Nacex = 'Nacex'
-      GlobalShippingMultiCarrier = 'GlobalShipping_MultiCarrier'
     end
   end
 end

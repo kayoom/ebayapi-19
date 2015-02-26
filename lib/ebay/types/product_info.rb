@@ -6,7 +6,7 @@ module Ebay # :nodoc:
     #  money_node :average_sold_price, 'AverageSoldPrice', :optional => true
     #  text_node :title, 'Title', :optional => true
     #  text_node :product_state, 'ProductState', :optional => true
-    #  text_node :product_info_id, '@productInfoID', :optional => true
+    #  value_array_node :product_info_ids, 'productInfoID', :default_value => []
     class ProductInfo
       include XML::Mapping
       include Initializer
@@ -15,7 +15,7 @@ module Ebay # :nodoc:
       money_node :average_sold_price, 'AverageSoldPrice', :optional => true
       text_node :title, 'Title', :optional => true
       text_node :product_state, 'ProductState', :optional => true
-      text_node :product_info_id, '@productInfoID', :optional => true
+      value_array_node :product_info_ids, 'productInfoID', :default_value => []
     end
   end
 end

@@ -36,7 +36,7 @@ module Ebay # :nodoc:
     #  text_node :paypal_account_status, 'PayPalAccountStatus', :optional => true
     #  value_array_node :user_subscriptions, 'UserSubscription', :default_value => []
     #  boolean_node :site_verified, 'SiteVerified', 'true', 'false', :optional => true
-    #  text_node :skype_id, 'SkypeID', :optional => true
+    #  value_array_node :skype_ids, 'SkypeID', :default_value => []
     #  boolean_node :ebay_wiki_read_only, 'eBayWikiReadOnly', 'true', 'false', :optional => true
     #  numeric_node :tuv_level, 'TUVLevel', :optional => true
     #  text_node :vatid, 'VATID', :optional => true
@@ -85,7 +85,7 @@ module Ebay # :nodoc:
       text_node :paypal_account_status, 'PayPalAccountStatus', :optional => true
       value_array_node :user_subscriptions, 'UserSubscription', :default_value => []
       boolean_node :site_verified, 'SiteVerified', 'true', 'false', :optional => true
-      text_node :skype_id, 'SkypeID', :optional => true
+      value_array_node :skype_ids, 'SkypeID', :default_value => []
       boolean_node :ebay_wiki_read_only, 'eBayWikiReadOnly', 'true', 'false', :optional => true
       numeric_node :tuv_level, 'TUVLevel', :optional => true
       text_node :vatid, 'VATID', :optional => true

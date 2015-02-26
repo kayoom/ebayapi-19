@@ -11,7 +11,7 @@ end
     #  text_node :group, 'Group', :optional => true
     #  text_node :field_name, 'FieldName', :optional => true
     #  text_node :code, 'Code', :optional => true
-    #  text_node :value, 'Value', :optional => true
+    #  value_array_node :values, 'Value', :default_value => []
     #  text_node :message, 'Message', :optional => true
     #  array_node :metadata, 'Metadata', :class => Metadata, :default_value => []
     class ListingRecommendation
@@ -26,7 +26,7 @@ end
       text_node :group, 'Group', :optional => true
       text_node :field_name, 'FieldName', :optional => true
       text_node :code, 'Code', :optional => true
-      text_node :value, 'Value', :optional => true
+      value_array_node :values, 'Value', :default_value => []
       text_node :message, 'Message', :optional => true
       array_node :metadata, 'Metadata', :class => Metadata, :default_value => []
     end

@@ -9,9 +9,9 @@ module Ebay # :nodoc:
     #  money_node :min_price, 'MinPrice', :optional => true
     #  money_node :max_price, 'MaxPrice', :optional => true
     #  text_node :product_reference_id, 'ProductReferenceID', :optional => true
-    #  text_node :product_id, '@productID', :optional => true
-    #  text_node :stock_photo_url, '@stockPhotoURL', :optional => true
-    #  text_node :title, '@title', :optional => true
+    #  value_array_node :product_ids, 'productID', :default_value => []
+    #  value_array_node :stock_photo_urls, 'stockPhotoURL', :default_value => []
+    #  value_array_node :titles, 'title', :default_value => []
     class Product
       include XML::Mapping
       include Initializer
@@ -22,9 +22,9 @@ module Ebay # :nodoc:
       money_node :min_price, 'MinPrice', :optional => true
       money_node :max_price, 'MaxPrice', :optional => true
       text_node :product_reference_id, 'ProductReferenceID', :optional => true
-      text_node :product_id, '@productID', :optional => true
-      text_node :stock_photo_url, '@stockPhotoURL', :optional => true
-      text_node :title, '@title', :optional => true
+      value_array_node :product_ids, 'productID', :default_value => []
+      value_array_node :stock_photo_urls, 'stockPhotoURL', :default_value => []
+      value_array_node :titles, 'title', :default_value => []
     end
   end
 end

@@ -13,7 +13,7 @@ module Ebay # :nodoc:
     #  text_node :status, 'Status', :optional => true
     #  text_node :searchable_string, 'SearchableString', :optional => true
     #  numeric_node :charity_region, 'CharityRegion', :optional => true
-    #  numeric_node :charity_domain, 'CharityDomain', :optional => true
+    #  value_array_node :charity_domains, 'CharityDomain', :default_value => []
     #  text_node :charity_id, 'CharityID', :optional => true
     #  text_node :logo_url_selling, 'LogoURLSelling', :optional => true
     #  boolean_node :display_logo_selling, 'DisplayLogoSelling', 'true', 'false', :optional => true
@@ -26,7 +26,7 @@ module Ebay # :nodoc:
     #  text_node :non_profit_second_name, 'NonProfitSecondName', :optional => true
     #  array_node :non_profit_addresses, 'NonProfitAddress', :class => NonProfitAddress, :default_value => []
     #  array_node :non_profit_social_addresses, 'NonProfitSocialAddress', :class => NonProfitSocialAddress, :default_value => []
-    #  text_node :id, '@id', :optional => true
+    #  value_array_node :ids, 'id', :default_value => []
     class CharityInfo
       include XML::Mapping
       include Initializer
@@ -40,7 +40,7 @@ module Ebay # :nodoc:
       text_node :status, 'Status', :optional => true
       text_node :searchable_string, 'SearchableString', :optional => true
       numeric_node :charity_region, 'CharityRegion', :optional => true
-      numeric_node :charity_domain, 'CharityDomain', :optional => true
+      value_array_node :charity_domains, 'CharityDomain', :default_value => []
       text_node :charity_id, 'CharityID', :optional => true
       text_node :logo_url_selling, 'LogoURLSelling', :optional => true
       boolean_node :display_logo_selling, 'DisplayLogoSelling', 'true', 'false', :optional => true
@@ -53,7 +53,7 @@ module Ebay # :nodoc:
       text_node :non_profit_second_name, 'NonProfitSecondName', :optional => true
       array_node :non_profit_addresses, 'NonProfitAddress', :class => NonProfitAddress, :default_value => []
       array_node :non_profit_social_addresses, 'NonProfitSocialAddress', :class => NonProfitSocialAddress, :default_value => []
-      text_node :id, '@id', :optional => true
+      value_array_node :ids, 'id', :default_value => []
     end
   end
 end

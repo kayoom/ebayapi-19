@@ -43,9 +43,9 @@ module Ebay # :nodoc:
     #  text_node :eias_token, 'EIASToken', :optional => true
     #  text_node :payment_hold_status, 'PaymentHoldStatus', :optional => true
     #  object_node :payment_hold_details, 'PaymentHoldDetails', :class => PaymentHoldDetail, :optional => true
-    #  array_node :refunds, 'RefundArray', 'Refund', :class => Refund, :default_value => []
     #  money_node :refund_amount, 'RefundAmount', :optional => true
     #  text_node :refund_status, 'RefundStatus', :optional => true
+    #  array_node :refunds, 'RefundArray', 'Refund', :class => Refund, :default_value => []
     #  boolean_node :is_multi_leg_shipping, 'IsMultiLegShipping', 'true', 'false', :optional => true
     #  object_node :multi_leg_shipping_details, 'MultiLegShippingDetails', :class => MultiLegShippingDetails, :optional => true
     #  object_node :monetary_details, 'MonetaryDetails', :class => PaymentsInformation, :optional => true
@@ -92,9 +92,9 @@ module Ebay # :nodoc:
       text_node :eias_token, 'EIASToken', :optional => true
       text_node :payment_hold_status, 'PaymentHoldStatus', :optional => true
       object_node :payment_hold_details, 'PaymentHoldDetails', :class => PaymentHoldDetail, :optional => true
-      array_node :refunds, 'RefundArray', 'Refund', :class => Refund, :default_value => []
       money_node :refund_amount, 'RefundAmount', :optional => true
       text_node :refund_status, 'RefundStatus', :optional => true
+      array_node :refunds, 'RefundArray', 'Refund', :class => Refund, :default_value => []
       boolean_node :is_multi_leg_shipping, 'IsMultiLegShipping', 'true', 'false', :optional => true
       object_node :multi_leg_shipping_details, 'MultiLegShippingDetails', :class => MultiLegShippingDetails, :optional => true
       object_node :monetary_details, 'MonetaryDetails', :class => PaymentsInformation, :optional => true

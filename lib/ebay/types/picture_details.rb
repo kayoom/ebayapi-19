@@ -6,12 +6,12 @@ module Ebay # :nodoc:
     #  text_node :gallery_type, 'GalleryType', :optional => true
     #  text_node :gallery_url, 'GalleryURL', :optional => true
     #  text_node :photo_display, 'PhotoDisplay', :optional => true
-    #  text_node :picture_url, 'PictureURL', :optional => true
+    #  value_array_node :picture_urls, 'PictureURL', :default_value => []
     #  text_node :picture_source, 'PictureSource', :optional => true
     #  text_node :gallery_duration, 'GalleryDuration', :optional => true
     #  text_node :gallery_status, 'GalleryStatus', :optional => true
     #  text_node :gallery_error_info, 'GalleryErrorInfo', :optional => true
-    #  text_node :external_picture_url, 'ExternalPictureURL', :optional => true
+    #  value_array_node :external_picture_urls, 'ExternalPictureURL', :default_value => []
     #  array_node :extended_picture_details, 'ExtendedPictureDetails', 'PictureURLs', :class => PictureURLs, :default_value => []
     class PictureDetails
       include XML::Mapping
@@ -20,12 +20,12 @@ module Ebay # :nodoc:
       text_node :gallery_type, 'GalleryType', :optional => true
       text_node :gallery_url, 'GalleryURL', :optional => true
       text_node :photo_display, 'PhotoDisplay', :optional => true
-      text_node :picture_url, 'PictureURL', :optional => true
+      value_array_node :picture_urls, 'PictureURL', :default_value => []
       text_node :picture_source, 'PictureSource', :optional => true
       text_node :gallery_duration, 'GalleryDuration', :optional => true
       text_node :gallery_status, 'GalleryStatus', :optional => true
       text_node :gallery_error_info, 'GalleryErrorInfo', :optional => true
-      text_node :external_picture_url, 'ExternalPictureURL', :optional => true
+      value_array_node :external_picture_urls, 'ExternalPictureURL', :default_value => []
       array_node :extended_picture_details, 'ExtendedPictureDetails', 'PictureURLs', :class => PictureURLs, :default_value => []
     end
   end

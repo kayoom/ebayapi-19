@@ -47,7 +47,7 @@ module Ebay # :nodoc:
     #  boolean_node :international_promotional_shipping_discount, 'InternationalPromotionalShippingDiscount', 'true', 'false', :optional => true
     #  object_node :promotional_shipping_discount_details, 'PromotionalShippingDiscountDetails', :class => PromotionalShippingDiscountDetails, :optional => true
     #  money_node :cod_cost, 'CODCost', :optional => true
-    #  text_node :exclude_ship_to_location, 'ExcludeShipToLocation', :optional => true
+    #  value_array_node :exclude_ship_to_locations, 'ExcludeShipToLocation', :default_value => []
     #  boolean_node :seller_exclude_ship_to_locations_preference, 'SellerExcludeShipToLocationsPreference', 'true', 'false', :optional => true
     #  array_node :shipment_tracking_details, 'ShipmentTrackingDetails', :class => ShipmentTrackingDetails, :default_value => []
     #  object_node :rate_table_details, 'RateTableDetails', :class => RateTableDetails, :optional => true
@@ -89,7 +89,7 @@ module Ebay # :nodoc:
       boolean_node :international_promotional_shipping_discount, 'InternationalPromotionalShippingDiscount', 'true', 'false', :optional => true
       object_node :promotional_shipping_discount_details, 'PromotionalShippingDiscountDetails', :class => PromotionalShippingDiscountDetails, :optional => true
       money_node :cod_cost, 'CODCost', :optional => true
-      text_node :exclude_ship_to_location, 'ExcludeShipToLocation', :optional => true
+      value_array_node :exclude_ship_to_locations, 'ExcludeShipToLocation', :default_value => []
       boolean_node :seller_exclude_ship_to_locations_preference, 'SellerExcludeShipToLocationsPreference', 'true', 'false', :optional => true
       array_node :shipment_tracking_details, 'ShipmentTrackingDetails', :class => ShipmentTrackingDetails, :default_value => []
       object_node :rate_table_details, 'RateTableDetails', :class => RateTableDetails, :optional => true

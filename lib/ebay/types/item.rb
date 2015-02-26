@@ -91,7 +91,7 @@ module Ebay # :nodoc:
     #  object_node :seller, 'Seller', :class => User, :optional => true
     #  object_node :selling_status, 'SellingStatus', :class => SellingStatus, :optional => true
     #  object_node :shipping_details, 'ShippingDetails', :class => ShippingDetails, :optional => true
-    #  text_node :ship_to_locations, 'ShipToLocations', :optional => true
+    #  value_array_node :ship_to_locations, 'ShipToLocations', :default_value => []
     #  text_node :site, 'Site', :optional => true
     #  money_node :start_price, 'StartPrice', :optional => true
     #  object_node :storefront, 'Storefront', :class => Storefront, :optional => true
@@ -147,7 +147,7 @@ module Ebay # :nodoc:
     #  boolean_node :update_seller_info, 'UpdateSellerInfo', 'true', 'false', :optional => true
     #  boolean_node :update_return_policy, 'UpdateReturnPolicy', 'true', 'false', :optional => true
     #  object_node :item_policy_violation, 'ItemPolicyViolation', :class => ItemPolicyViolation, :optional => true
-    #  text_node :cross_border_trade, 'CrossBorderTrade', :optional => true
+    #  value_array_node :cross_border_trades, 'CrossBorderTrade', :default_value => []
     #  object_node :business_seller_details, 'BusinessSellerDetails', :class => BusinessSellerDetails, :optional => true
     #  money_node :buyer_guarantee_price, 'BuyerGuaranteePrice', :optional => true
     #  object_node :buyer_requirement_details, 'BuyerRequirementDetails', :class => BuyerRequirementDetails, :optional => true
@@ -246,7 +246,7 @@ module Ebay # :nodoc:
       object_node :seller, 'Seller', :class => User, :optional => true
       object_node :selling_status, 'SellingStatus', :class => SellingStatus, :optional => true
       object_node :shipping_details, 'ShippingDetails', :class => ShippingDetails, :optional => true
-      text_node :ship_to_locations, 'ShipToLocations', :optional => true
+      value_array_node :ship_to_locations, 'ShipToLocations', :default_value => []
       text_node :site, 'Site', :optional => true
       money_node :start_price, 'StartPrice', :optional => true
       object_node :storefront, 'Storefront', :class => Storefront, :optional => true
@@ -302,7 +302,7 @@ module Ebay # :nodoc:
       boolean_node :update_seller_info, 'UpdateSellerInfo', 'true', 'false', :optional => true
       boolean_node :update_return_policy, 'UpdateReturnPolicy', 'true', 'false', :optional => true
       object_node :item_policy_violation, 'ItemPolicyViolation', :class => ItemPolicyViolation, :optional => true
-      text_node :cross_border_trade, 'CrossBorderTrade', :optional => true
+      value_array_node :cross_border_trades, 'CrossBorderTrade', :default_value => []
       object_node :business_seller_details, 'BusinessSellerDetails', :class => BusinessSellerDetails, :optional => true
       money_node :buyer_guarantee_price, 'BuyerGuaranteePrice', :optional => true
       object_node :buyer_requirement_details, 'BuyerRequirementDetails', :class => BuyerRequirementDetails, :optional => true

@@ -2,13 +2,13 @@
 module Ebay # :nodoc:
   module Types # :nodoc:
     # == Attributes
-    #  text_node :id, '@id', :optional => true
+    #  value_array_node :ids, 'id', :default_value => []
     #  
     class CharityAffiliation
       include XML::Mapping
       include Initializer
       root_element_name 'CharityAffiliation'
-      text_node :id, '@id', :optional => true
+      value_array_node :ids, 'id', :default_value => []
       
     end
   end

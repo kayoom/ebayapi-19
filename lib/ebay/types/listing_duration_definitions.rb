@@ -4,13 +4,13 @@ module Ebay # :nodoc:
   module Types # :nodoc:
     # == Attributes
     #  array_node :listing_durations, 'ListingDuration', :class => ListingDurationDefinition, :default_value => []
-    #  numeric_node :version, '@Version', :optional => true
+    #  value_array_node :versions, 'Version', :default_value => []
     class ListingDurationDefinitions
       include XML::Mapping
       include Initializer
       root_element_name 'ListingDurationDefinitions'
       array_node :listing_durations, 'ListingDuration', :class => ListingDurationDefinition, :default_value => []
-      numeric_node :version, '@Version', :optional => true
+      value_array_node :versions, 'Version', :default_value => []
     end
   end
 end
