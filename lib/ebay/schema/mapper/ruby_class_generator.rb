@@ -204,7 +204,7 @@ module Ebay
         name = element.name.name
         type = element.type.name
         min = element.minoccurs
-        max = element.maxoccurs || -1
+        max = element.maxoccurs
 
         options = { :type => type,
           :min => min,
@@ -224,16 +224,36 @@ module Ebay
           if self.name == 'Item' && name == 'Description'
             CdataNode.new(name, options)
           else
-            TextNode.new(name, options)
+            if options[:max] == 1
+              TextNode.new(name, options)
+            else
+              ValueArrayNode.new(name, options)
+            end
           end
         when 'anyURI', 'token', 'duration'
-          TextNode.new(name, options)
+          if options[:max] == 1
+            TextNode.new(name, options)
+          else
+            ValueArrayNode.new(name, options)
+          end
         when 'int', 'float', 'long', 'decimal', 'double'
-          NumericNode.new(name, options)
+          if options[:max] == 1
+            NumericNode.new(name, options)
+          else
+            ValueArrayNode.new(name, options)
+          end
         when 'dateTime'
-          DateTimeNode.new(name, options)
+          if options[:max] == 1
+            DateTimeNode.new(name, options)
+          else
+            ValueArrayNode.new(name, options)
+          end
         when 'time'
-          DateTimeNode.new(name, options)
+          if options[:max] == 1
+            DateTimeNode.new(name, options)
+          else
+            ValueArrayNode.new(name, options)
+          end
         when 'boolean'
           BooleanNode.new(name, options)
         end
@@ -249,14 +269,6 @@ module Ebay
           if simple_type
             TextNode.new(name, options)
           elsif element = @complex_types.find_name(type)
-            # if type == 'ErrorType'
-            #   puts name.inspect
-            #   puts min.inspect
-            #   puts max.inspect
-            #   puts element.elements.inspect
-            #   puts element.elements[0].maxoccurs
-            # end
-
             if element.elements.size == 1 && element.elements[0].maxoccurs.nil? #-> unbounded
               # Found a container!
               child = element.elements[0]
