@@ -20,7 +20,10 @@ module Ebay #:nodoc:
     def initialize(errors)
       @errors = errors
       message = @errors.map do |error|
-        error.long_message if error.respond_to?(:long_message)
+        s = ""
+        s << "[#{error.error_code}] " if error.respond_to?(:error_code)
+        s << error.long_message if error.respond_to?(:long_message)
+        s
       end
       message = message.join("\n").to_s
       super(message)
